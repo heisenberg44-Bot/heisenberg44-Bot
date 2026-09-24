@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ma Boutique CBD</title>
+  <title>Heisenberg44 - Boutique CBD</title>
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
@@ -15,88 +15,83 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
+      background: #111;
+      color: white;
     }
 
     header {
-      background: #1d3b2a;
-      color: white;
-      padding: 25px 20px;
+      padding: 22px 15px;
       text-align: center;
+      background: #171717;
+      border-bottom: 1px solid #333;
     }
 
     header h1 {
-      margin: 0 0 8px;
+      margin: 0;
+      font-size: 25px;
     }
 
     header p {
-      margin: 0;
-      opacity: 0.85;
+      margin: 8px 0 0;
+      color: #aaa;
     }
 
     .products {
-      padding: 20px;
+      padding: 15px;
       display: grid;
-      gap: 16px;
+      gap: 15px;
     }
 
     .product {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 3px 12px rgba(0,0,0,.08);
-    }
-
-    .product img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-    }
-
-    .product-content {
+      background: #1d1d1d;
+      border-radius: 14px;
       padding: 16px;
+      border: 1px solid #333;
     }
 
     .product h2 {
       margin: 0 0 8px;
-      font-size: 20px;
+      font-size: 19px;
     }
 
-    .description {
-      color: #666;
+    .product p {
+      color: #aaa;
       font-size: 14px;
-      line-height: 1.4;
     }
 
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-      margin: 14px 0;
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #555;
+      background: #292929;
+      color: white;
+      font-size: 15px;
     }
 
     button {
       width: 100%;
-      border: 0;
-      border-radius: 10px;
       padding: 13px;
-      background: #1d3b2a;
+      border: 0;
+      border-radius: 9px;
+      background: #2ea043;
       color: white;
       font-size: 16px;
       font-weight: bold;
     }
 
-    #cart {
-      position: fixed;
-      bottom: 15px;
-      left: 15px;
-      right: 15px;
-      background: #1d3b2a;
-      color: white;
+    .cart {
+      position: sticky;
+      bottom: 0;
       padding: 15px;
-      border-radius: 14px;
-      text-align: center;
-      font-weight: bold;
+      background: #171717;
+      border-top: 1px solid #333;
+    }
+
+    #cart {
+      margin-bottom: 10px;
+      color: #ddd;
     }
   </style>
 </head>
@@ -104,65 +99,181 @@
 <body>
 
 <header>
-  <h1>🌿 Ma Boutique CBD</h1>
-  <p>Découvrez notre sélection</p>
+  <h1>🌿 Heisenberg44</h1>
+  <p>Boutique CBD</p>
 </header>
 
 <div class="products">
 
   <div class="product">
-    <img src="https://via.placeholder.com/600x400" alt="Produit CBD">
-    <div class="product-content">
-      <h2>Fleurs CBD</h2>
-      <div class="description">
-        Produit CBD à remplacer par ta description.
-      </div>
-      <div class="price">15,00 €</div>
-      <button onclick="addToCart('Fleurs CBD', 15)">
-        Ajouter au panier
-      </button>
-    </div>
+    <h2>Cali Mousse 🍯🌟</h2>
+    <p>Farm : in California 🇺🇸</p>
+
+    <select onchange="setPrice('Cali Mousse 🍯🌟', this)">
+      <option value="10">2,5g — 10€</option>
+      <option value="20">5g — 20€</option>
+      <option value="40">10g — 40€</option>
+      <option value="90">20g — 90€</option>
+      <option value="170">50g — 170€</option>
+      <option value="270">100g — 270€</option>
+    </select>
+
+    <button onclick="addProduct('Cali Mousse 🍯🌟')">
+      Ajouter au panier
+    </button>
   </div>
 
   <div class="product">
-    <img src="https://via.placeholder.com/600x400" alt="Huile CBD">
-    <div class="product-content">
-      <h2>Huile CBD</h2>
-      <div class="description">
-        Produit CBD à remplacer par ta description.
-      </div>
-      <div class="price">25,00 €</div>
-      <button onclick="addToCart('Huile CBD', 25)">
-        Ajouter au panier
-      </button>
-    </div>
+    <h2>Tiramisu Dry 🇺🇸🍫</h2>
+    <p>90U / FARM : K.G.F 🦊</p>
+
+    <select onchange="setPrice('Tiramisu Dry 🇺🇸🍫', this)">
+      <option value="20">1,6g — 20€</option>
+      <option value="50">5g — 50€</option>
+      <option value="80">10g — 80€</option>
+      <option value="160">20g — 160€</option>
+      <option value="360">50g — 360€</option>
+      <option value="530">100g — 530€</option>
+    </select>
+
+    <button onclick="addProduct('Tiramisu Dry 🇺🇸🍫')">
+      Ajouter au panier
+    </button>
+  </div>
+
+  <div class="product">
+    <h2>Apple Dry 🍫🍏🫨</h2>
+    <p>Product in Morocco</p>
+
+    <select onchange="setPrice('Apple Dry 🍫🍏🫨', this)">
+      <option value="20">1,4g — 20€</option>
+      <option value="50">5g — 50€</option>
+      <option value="80">10g — 80€</option>
+      <option value="160">20g — 160€</option>
+      <option value="360">50g — 360€</option>
+      <option value="550">100g — 550€</option>
+    </select>
+
+    <button onclick="addProduct('Apple Dry 🍫🍏🫨')">
+      Ajouter au panier
+    </button>
+  </div>
+
+  <div class="product">
+    <h2>Frozen Banana Papaya 🍯🍌🥭</h2>
+    <p>120U / FARM : K.G.F 🦊</p>
+
+    <select onchange="setPrice('Frozen Banana Papaya 🍯🍌🥭', this)">
+      <option value="20">1g — 20€</option>
+      <option value="50">5g — 50€</option>
+      <option value="80">10g — 80€</option>
+      <option value="160">20g — 160€</option>
+      <option value="360">50g — 360€</option>
+      <option value="620">100g — 620€</option>
+    </select>
+
+    <button onclick="addProduct('Frozen Banana Papaya 🍯🍌🥭')">
+      Ajouter au panier
+    </button>
+  </div>
+
+  <div class="product">
+    <h2>Cali Amnesia 🍋‍🟩🍋🫠</h2>
+    <p>Farm : in Spain 🇪🇸</p>
+
+    <select onchange="setPrice('Cali Amnesia 🍋‍🟩🍋🫠', this)">
+      <option value="10">1g — 10€</option>
+      <option value="50">5g — 50€</option>
+      <option value="90">10g — 90€</option>
+      <option value="170">20g — 170€</option>
+      <option value="400">50g — 400€</option>
+      <option value="650">100g — 650€</option>
+    </select>
+
+    <button onclick="addProduct('Cali Amnesia 🍋‍🟩🍋🫠')">
+      Ajouter au panier
+    </button>
   </div>
 
 </div>
 
-<div id="cart">
-  🛒 Panier : <span id="cartCount">0</span> article(s)
+<div class="cart">
+  <div id="cart">🛒 Panier vide</div>
+  <button onclick="sendOrder()">Commander sur Telegram</button>
 </div>
 
 <script>
-  const tg = window.Telegram.WebApp;
-
-  tg.ready();
-  tg.expand();
-
   let cart = [];
+  let selectedPrices = {};
 
-  function addToCart(name, price) {
+  function setPrice(product, select) {
+    selectedPrices[product] = select.value;
+  }
+
+  function addProduct(product) {
+    const price = selectedPrices[product];
+
+    if (!price) {
+      alert("Choisis d'abord un format.");
+      return;
+    }
+
     cart.push({
-      name: name,
+      product: product,
       price: price
     });
 
-    document.getElementById("cartCount").textContent = cart.length;
+    updateCart();
+  }
 
-    if (tg.HapticFeedback) {
-      tg.HapticFeedback.impactOccurred("light");
+  function updateCart() {
+    if (cart.length === 0) {
+      document.getElementById("cart").innerText = "🛒 Panier vide";
+      return;
     }
+
+    let total = 0;
+    let text = "🛒 Panier :\n";
+
+    cart.forEach(item => {
+      total += Number(item.price);
+      text += "• " + item.product + " — " + item.price + "€\n";
+    });
+
+    text += "\n💰 Total : " + total + "€";
+
+    document.getElementById("cart").innerText = text;
+  }
+
+  function sendOrder() {
+    if (cart.length === 0) {
+      alert("Ton panier est vide.");
+      return;
+    }
+
+    let message = "Bonjour, je souhaite passer une commande :\n\n";
+
+    cart.forEach(item => {
+      message += "• " + item.product + " — " + item.price + "€\n";
+    });
+
+    let total = cart.reduce(
+      (sum, item) => sum + Number(item.price),
+      0
+    );
+
+    message += "\nTotal : " + total + "€";
+
+    if (window.Telegram && Telegram.WebApp) {
+      Telegram.WebApp.showAlert(message);
+    } else {
+      alert(message);
+    }
+  }
+
+  if (window.Telegram && Telegram.WebApp) {
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
   }
 </script>
 
