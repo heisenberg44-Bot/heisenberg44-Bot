@@ -2,683 +2,371 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Heisenberg44</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>HEISENBERG44</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f7eee4;
-  color:#171717;
-  padding-bottom:100px;
-}
-
-/* HERO */
-
-.hero{
-  min-height:560px;
-  position:relative;
-  overflow:hidden;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,170,30,.05),
-      rgba(0,0,0,.05) 35%,
-      rgba(0,0,0,.78) 100%
-    ),
-    url("hero.jpg") center/cover no-repeat;
-
-  display:flex;
-  align-items:flex-end;
-  padding:25px 20px 40px;
-}
-
-.hero-content{
-  position:relative;
-  z-index:5;
-  width:100%;
-}
-
-.badge{
-  display:inline-block;
-  background:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:#f2f2f7;
   color:#111;
-  padding:9px 14px;
-  border-radius:30px;
-  font-size:12px;
-  font-weight:1000;
+  overflow-x:hidden;
 }
+.app{min-height:100vh;padding-bottom:100px}
 
-.logo{
-  margin:18px 0;
-  font-size:clamp(55px,17vw,105px);
-  line-height:.82;
-  font-weight:1000;
-  font-style:italic;
-  letter-spacing:-6px;
-  color:#fff;
-
-  -webkit-text-stroke:2px #111;
-
-  text-shadow:
-    4px 4px 0 #ffb300,
-    8px 8px 0 #111,
-    0 15px 30px rgba(0,0,0,.7);
-}
-
-.coffee{
-  display:inline-block;
-  padding:10px 18px;
-  border-radius:14px;
-
-  background:#111;
-  color:#ffb914;
-
-  border:2px solid #ffb914;
-
-  font-size:18px;
-  font-weight:1000;
-  letter-spacing:3px;
-}
-
-.tagline{
-  margin-top:14px;
-  color:#fff;
-  font-size:16px;
-  font-weight:900;
-  text-shadow:2px 2px 6px #000;
-}
-
-/* MAIN */
-
-main{
-  max-width:1100px;
-  margin:auto;
-  padding:30px 15px;
-}
-
-.title{
+/* HEADER */
+.header{
+  height:92px;
+  background:#fff;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-bottom:20px;
+  justify-content:space-between;
+  padding:0 18px;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.close{font-size:21px}
+.title{text-align:center;flex:1}
+.title b{font-size:20px;display:block}
+.title span{font-size:15px;color:#777}
+.menu{
+  width:38px;height:38px;border:2px solid #111;
+  border-radius:50%;display:flex;
+  align-items:center;justify-content:center;
+  font-size:18px;
 }
 
-.title h2{
-  font-size:30px;
-  font-weight:1000;
-}
-
-.title span{
-  color:#999;
-  font-size:11px;
-  font-weight:900;
-}
-
-/* PRODUCTS */
-
-.products{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:20px;
-}
-
-.product{
-  overflow:hidden;
-  background:#fff;
-  border-radius:26px;
-  border:1px solid #eadfd4;
-  box-shadow:0 12px 35px rgba(55,30,10,.12);
-}
-
-.product-top{
-  min-height:205px;
+/* BANNIÈRE */
+.hero{
+  height:390px;
   position:relative;
   overflow:hidden;
-
-  display:flex;
-  align-items:flex-end;
-
-  padding:20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffdf58,
-      #ff8735,
-      #df3b35
-    );
+  background:#111;
 }
-
-.product-number{
-  position:absolute;
-  left:16px;
-  top:15px;
-
-  background:#fff;
-  padding:7px 11px;
-  border-radius:13px;
-
-  font-size:12px;
-  font-weight:1000;
-
-  z-index:5;
-}
-
-.product-icon{
-  position:absolute;
-  right:18px;
-  top:12px;
-
-  font-size:48px;
-  z-index:4;
-}
-
-.product-name{
-  position:relative;
-  z-index:5;
-
-  color:#fff;
-  font-size:22px;
-  font-weight:1000;
-
-  text-shadow:2px 2px 7px #000;
-}
-
-.product-video{
-  position:absolute;
-  inset:0;
-
+.hero img{
   width:100%;
   height:100%;
-
   object-fit:cover;
-  z-index:1;
 }
-
-.product-top::after{
+.hero:after{
   content:"";
   position:absolute;
   inset:0;
-
-  background:
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.65),
-      rgba(0,0,0,.05)
-    );
-
-  z-index:2;
+  background:linear-gradient(
+    transparent 50%,
+    rgba(255,255,255,.85)
+  );
+}
+.socials{
+  position:absolute;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:12px;
+  z-index:3;
+}
+.social{
+  width:62px;height:62px;
+  border-radius:17px;
+  background:rgba(255,255,255,.5);
+  backdrop-filter:blur(8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
 }
 
-.product-body{
-  padding:18px;
+/* TITRE */
+.shop-title{
+  background:#fff;
+  text-align:center;
+  padding:24px 8px 30px;
+  font-size:29px;
+  font-weight:900;
 }
 
-.label{
-  display:inline-block;
-
-  padding:7px 10px;
-  margin-bottom:15px;
-
-  border-radius:10px;
-
-  background:#fff0e4;
-  color:#df4928;
-
-  font-size:11px;
-  font-weight:1000;
+/* SECTIONS */
+.section{padding:28px 20px}
+.section-title{
+  color:#929299;
+  font-size:21px;
+  font-weight:800;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.section-title:before{
+  content:"";
+  width:5px;height:30px;
+  background:#888;
 }
 
-.formats{
+/* CATÉGORIES */
+.categories{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:9px;
+  gap:18px;
 }
+.category{
+  background:#fff;
+  border-radius:26px;
+  padding:30px 10px 25px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.05);
+}
+.category-img{
+  width:110px;
+  height:65px;
+  object-fit:cover;
+  border-radius:5px;
+  margin-bottom:22px;
+}
+.category-name{
+  font-size:23px;
+  font-weight:750;
+  margin-bottom:18px;
+}
+.flags{font-size:23px;letter-spacing:4px}
 
-.format{
-  padding:12px;
-
-  border-radius:14px;
-  border:1px solid #eadfd5;
-  background:#fffaf6;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
+/* PRODUITS */
+.products{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.product{
+  background:#fff;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,.06);
+}
+.product img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+}
+.content{padding:15px}
+.badge{
+  display:inline-block;
+  background:#050505;
+  color:#fff;
+  border-radius:11px;
+  padding:8px 10px;
   font-size:12px;
+  font-weight:800;
+  margin-bottom:13px;
+}
+.product-name{
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:17px;
+}
+.button{
+  width:100%;
+  background:#fff;
+  border:2px solid #111;
+  border-radius:16px;
+  padding:13px 5px;
+  font-size:17px;
+  font-weight:700;
 }
 
-.format strong{
-  font-size:13px;
-}
-
-.price{
-  color:#e44723;
-  font-weight:1000;
-}
-
-/* CART VISUEL UNIQUEMENT */
-
-.cart-bar{
+/* BARRE DU BAS */
+.bottom{
   position:fixed;
   z-index:50;
-
-  left:12px;
-  right:12px;
-  bottom:12px;
-
-  padding:14px 16px;
-
-  border-radius:23px;
-
-  background:#17191f;
-  color:#fff;
-
+  bottom:15px;
+  left:20px;
+  right:20px;
+  height:78px;
+  border-radius:42px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(15px);
+  box-shadow:0 5px 25px rgba(0,0,0,.13);
   display:flex;
   align-items:center;
-  justify-content:space-between;
-
-  box-shadow:0 12px 40px rgba(0,0,0,.35);
+  justify-content:space-around;
 }
-
-.cart-info{
-  display:flex;
-  flex-direction:column;
-}
-
-.cart-info strong{
-  font-size:14px;
-}
-
-.cart-info span{
-  color:#aaa;
-  font-size:10px;
-  margin-top:3px;
-}
-
-.cart-button{
-  border:0;
-  border-radius:15px;
-
-  padding:12px 16px;
-
-  background:linear-gradient(
-    90deg,
-    #ff741c,
-    #ffc21b
-  );
-
-  color:#111;
-  font-size:12px;
-  font-weight:1000;
-}
-
-.footer{
-  text-align:center;
-  padding:30px 15px;
-
+.nav{
   color:#999;
-  font-size:11px;
+  font-size:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.nav.active{
+  color:#fff;
+  background:#000;
+  border-radius:38px;
+  width:150px;
+  height:58px;
+  gap:10px;
+}
+.nav.active span{
+  font-size:19px;
+  font-weight:700;
 }
 
-@media(min-width:700px){
-
-  .hero{
-    min-height:680px;
-    padding:55px 8%;
-  }
-
-  .products{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .logo{
-    font-size:105px;
-  }
+/* PETIT ÉCRAN */
+@media(max-width:380px){
+  .hero{height:350px}
+  .product img{height:165px}
+  .product-name{font-size:18px}
+  .category-name{font-size:20px}
+  .nav.active{width:130px}
 }
 </style>
 </head>
 
 <body>
 
-<header class="hero">
+<div class="app">
 
-  <div class="hero-content">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="close">Close</div>
 
-    <div class="badge">
-      ☕ COFFEE SHOP
+    <div class="title">
+      <b>🥷 HEISENBERG44 🥷</b>
+      <span>mini app</span>
     </div>
 
-    <div class="logo">
-      Heisenberg44
+    <div class="menu">•••</div>
+  </header>
+
+
+  <!-- IMAGE HEISENBERG44 -->
+  <section class="hero">
+    <img src="heisenberg44.jpg" alt="HEISENBERG44">
+
+    <div class="socials">
+      <div class="social">✈️</div>
+      <div class="social">◎</div>
+      <div class="social">◉</div>
+      <div class="social">🔗</div>
+      <div class="social">◎</div>
     </div>
-
-    <div class="coffee">
-      COFFEE SHOP
-    </div>
-
-    <div class="tagline">
-      🌴 Good vibes • Good coffee • Sunset vibes 🌅
-    </div>
-
-  </div>
-
-</header>
-
-
-<main>
-
-  <div class="title">
-    <h2>Notre collection</h2>
-    <span>HEISENBERG44</span>
-  </div>
-
-
-  <section class="products">
-
-
-    <!-- PRODUIT 01 -->
-
-    <article class="product">
-
-      <div class="product-top">
-
-        <div class="product-number">01</div>
-
-        <div class="product-icon">🍯</div>
-
-        <div class="product-name">
-          Produit 01
-        </div>
-
-      </div>
-
-      <div class="product-body">
-
-        <div class="label">
-          COLLECTION
-        </div>
-
-        <div class="formats">
-
-          <div class="format">
-            <strong>Format 1</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 2</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 3</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 4</strong>
-            <span class="price">— €</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <!-- PRODUIT 02 -->
-
-    <article class="product">
-
-      <div class="product-top">
-
-        <div class="product-number">02</div>
-
-        <div class="product-icon">🍫</div>
-
-        <div class="product-name">
-          Produit 02
-        </div>
-
-      </div>
-
-      <div class="product-body">
-
-        <div class="label">
-          COLLECTION
-        </div>
-
-        <div class="formats">
-
-          <div class="format">
-            <strong>Format 1</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 2</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 3</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 4</strong>
-            <span class="price">— €</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <!-- PRODUIT 03 -->
-
-    <article class="product">
-
-      <div class="product-top">
-
-        <div class="product-number">03</div>
-
-        <div class="product-icon">🍏</div>
-
-        <div class="product-name">
-          Produit 03
-        </div>
-
-      </div>
-
-      <div class="product-body">
-
-        <div class="label">
-          COLLECTION
-        </div>
-
-        <div class="formats">
-
-          <div class="format">
-            <strong>Format 1</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 2</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 3</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 4</strong>
-            <span class="price">— €</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <!-- PRODUIT 04 : VIDEO -->
-
-    <article class="product">
-
-      <div class="product-top">
-
-        <div class="product-number">04</div>
-
-        <video
-          class="product-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto">
-
-          <source
-            src="cam_930a43ee.mp4"
-            type="video/mp4">
-
-        </video>
-
-        <div class="product-name">
-          Produit 04
-        </div>
-
-      </div>
-
-      <div class="product-body">
-
-        <div class="label">
-          COLLECTION
-        </div>
-
-        <div class="formats">
-
-          <div class="format">
-            <strong>Format 1</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 2</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 3</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 4</strong>
-            <span class="price">— €</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <!-- PRODUIT 05 -->
-
-    <article class="product">
-
-      <div class="product-top">
-
-        <div class="product-number">05</div>
-
-        <div class="product-icon">🍋</div>
-
-        <div class="product-name">
-          Produit 05
-        </div>
-
-      </div>
-
-      <div class="product-body">
-
-        <div class="label">
-          COLLECTION
-        </div>
-
-        <div class="formats">
-
-          <div class="format">
-            <strong>Format 1</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 2</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 3</strong>
-            <span class="price">— €</span>
-          </div>
-
-          <div class="format">
-            <strong>Format 4</strong>
-            <span class="price">— €</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </article>
-
   </section>
 
 
-  <div class="footer">
-    Heisenberg44<br>
-    Présentation catalogue
+  <!-- TITRE -->
+  <div class="shop-title">
+    HEISENBERG44 SHOP 🥷
   </div>
 
-</main>
+
+  <!-- CATÉGORIES -->
+  <section class="section">
+
+    <div class="section-title">CATÉGORIES</div>
+
+    <div class="categories">
+
+      <div class="category">
+        <img class="category-img" src="heisenberg44.jpg">
+        <div class="category-name">Hash 🧱</div>
+        <div class="flags">🇲🇦 🇪🇸 🇺🇸</div>
+      </div>
+
+      <div class="category">
+        <img class="category-img" src="heisenberg44.jpg">
+        <div class="category-name">Weed 🌿</div>
+        <div class="flags">🇲🇦 🇪🇸 🇺🇸</div>
+      </div>
+
+    </div>
+  </section>
 
 
-<div class="cart-bar">
+  <!-- RÉCENTS -->
+  <section class="section">
 
-  <div class="cart-info">
+    <div class="section-title">RÉCENTS</div>
 
-    <strong>🛒 Catalogue</strong>
+    <div class="products">
 
-    <span>
-      Présentation visuelle uniquement
-    </span>
+      <div class="product">
+        <img src="heisenberg44.jpg">
 
-  </div>
+        <div class="content">
+          <div class="badge">🟡 JAUNE MOUSSEUX 🟡</div>
 
-  <button class="cart-button">
-    Explorer →
-  </button>
+          <div class="product-name">
+            TOP ULTRA MOUSS 🔥
+          </div>
+
+          <button class="button">
+            Voir les détails
+          </button>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <img src="heisenberg44.jpg">
+
+        <div class="content">
+          <div class="badge">🇲🇦 NEWS TOP 🔥</div>
+
+          <div class="product-name">
+            MARACUJA ⚡
+          </div>
+
+          <button class="button">
+            Voir les détails
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- TENDANCES -->
+  <section class="section">
+
+    <div class="section-title">TENDANCES</div>
+
+    <div class="products">
+
+      <div class="product">
+        <img src="heisenberg44.jpg">
+
+        <div class="content">
+          <div class="badge">🇪🇸 TOP SHELF</div>
+
+          <div class="product-name">
+            TROPICANA
+          </div>
+
+          <button class="button">
+            Voir les détails
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- NAVIGATION -->
+  <nav class="bottom">
+
+    <div class="nav">🛍️</div>
+
+    <div class="nav active">
+      🏠
+      <span>Shop</span>
+    </div>
+
+    <div class="nav">👤</div>
+
+  </nav>
 
 </div>
 
