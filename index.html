@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heisenberg44 Coffee Shop</title>
+
+<title>Heisenberg44 • Coffee Shop</title>
 
 <style>
 *{
@@ -14,9 +15,9 @@
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#fff8ef;
+  background:#f8efe5;
   color:#171717;
-  padding-bottom:110px;
+  padding-bottom:100px;
 }
 
 /* =========================
@@ -24,32 +25,35 @@ body{
 ========================= */
 
 .hero{
-  min-height:520px;
+  min-height:560px;
   position:relative;
   overflow:hidden;
-  display:flex;
-  align-items:flex-end;
-  padding:30px 20px 38px;
+
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.05),
-      rgba(0,0,0,.15) 45%,
-      rgba(0,0,0,.62) 100%
+      rgba(255,180,30,.05),
+      rgba(0,0,0,.05) 35%,
+      rgba(0,0,0,.72) 100%
     ),
-    url("hero.jpg") center center / cover no-repeat;
+    url("hero.jpg") center/cover no-repeat;
+
+  display:flex;
+  align-items:flex-end;
+  padding:25px 20px 40px;
 }
 
-.hero::before{
-  content:"";
+.hero-overlay{
   position:absolute;
   inset:0;
+
   background:
     radial-gradient(
-      circle at 82% 20%,
-      rgba(255,220,70,.55),
-      transparent 25%
+      circle at 50% 70%,
+      rgba(255,170,30,.25),
+      transparent 38%
     );
+
   pointer-events:none;
 }
 
@@ -59,55 +63,74 @@ body{
   width:100%;
 }
 
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  background:#111;
-  color:#fff;
-  padding:9px 15px;
-  border-radius:30px;
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.5px;
-  box-shadow:0 7px 20px rgba(0,0,0,.35);
-  margin-bottom:12px;
-}
+/* logo énorme */
 
 .logo{
-  font-size:clamp(48px,14vw,92px);
-  line-height:.85;
+  font-size:clamp(58px,17vw,105px);
+  line-height:.82;
   font-weight:1000;
   font-style:italic;
-  letter-spacing:-5px;
+  letter-spacing:-6px;
   color:#fff;
-  text-transform:none;
+
   text-shadow:
-    4px 4px 0 #111,
-    7px 7px 0 #ffb300,
-    10px 10px 20px rgba(0,0,0,.55);
+    3px 3px 0 #111,
+    6px 6px 0 #ffb300,
+    10px 10px 0 #111,
+    0 15px 30px rgba(0,0,0,.65);
+
   -webkit-text-stroke:2px #111;
-  margin-bottom:15px;
+
+  margin:12px 0 20px;
 }
 
-.logo-small{
+.coffee-logo{
   display:inline-block;
+
+  padding:10px 18px;
+
+  border-radius:14px;
+
   background:#111;
-  color:#ffbd16;
-  padding:8px 15px;
-  border-radius:12px;
-  font-size:20px;
+
+  color:#ffb914;
+
+  font-size:18px;
   font-weight:1000;
-  letter-spacing:2px;
-  box-shadow:0 5px 15px rgba(0,0,0,.35);
+
+  letter-spacing:3px;
+
+  border:2px solid #ffb914;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.45);
 }
 
-.hero-subtitle{
-  color:#fff;
+.hero-text{
+  color:white;
   font-size:17px;
   font-weight:900;
-  margin-top:12px;
-  text-shadow:2px 2px 5px #000;
+  margin-top:14px;
+
+  text-shadow:
+    2px 2px 5px #000;
+}
+
+.hero-badge{
+  display:inline-block;
+
+  background:white;
+  color:#111;
+
+  padding:9px 14px;
+
+  border-radius:30px;
+
+  font-size:12px;
+  font-weight:1000;
+
+  box-shadow:
+    0 6px 20px rgba(0,0,0,.35);
 }
 
 /* =========================
@@ -115,28 +138,34 @@ body{
 ========================= */
 
 main{
-  max-width:1050px;
+  max-width:1100px;
   margin:auto;
+
   padding:30px 15px;
 }
 
-.section-title{
+.title-row{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   margin-bottom:20px;
 }
 
-.section-title h2{
+.title-row h2{
   font-size:30px;
   font-weight:1000;
 }
 
-.section-title span{
-  color:#777;
-  font-size:13px;
+.title-row span{
+  color:#888;
+  font-size:12px;
   font-weight:bold;
 }
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .products{
   display:grid;
@@ -144,111 +173,159 @@ main{
   gap:20px;
 }
 
-/* =========================
-   PRODUCT CARD
-========================= */
-
 .product{
-  background:#fff;
-  border-radius:25px;
   overflow:hidden;
-  border:1px solid #eadfd5;
-  box-shadow:0 12px 35px rgba(60,35,15,.13);
+
+  background:#fff;
+
+  border-radius:26px;
+
+  border:1px solid #eadfd4;
+
+  box-shadow:
+    0 12px 35px rgba(55,30,10,.12);
 }
 
 .product-top{
-  min-height:180px;
+  min-height:190px;
+
   position:relative;
+
   overflow:hidden;
+
   display:flex;
   align-items:flex-end;
+
   padding:20px;
+
   background:
-    linear-gradient(135deg,#ffd95c,#ff8d32,#e83d32);
+    linear-gradient(
+      135deg,
+      #ffdf58,
+      #ff8735,
+      #df3b35
+    );
 }
 
 .product-number{
   position:absolute;
-  left:17px;
+
+  left:16px;
   top:15px;
+
   z-index:5;
-  background:#fff;
-  color:#111;
+
+  background:white;
+
   padding:7px 11px;
+
   border-radius:13px;
+
   font-size:12px;
   font-weight:1000;
 }
 
 .product-icon{
   position:absolute;
+
   right:18px;
   top:13px;
-  font-size:46px;
+
+  font-size:48px;
+
   z-index:4;
 }
 
 .product-name{
   position:relative;
+
   z-index:5;
-  color:#fff;
+
+  color:white;
+
   font-size:23px;
+
   font-weight:1000;
+
   text-shadow:
-    2px 2px 5px rgba(0,0,0,.7);
-  max-width:90%;
+    2px 2px 7px rgba(0,0,0,.7);
 }
 
 .product-video{
   position:absolute;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
+
   z-index:1;
 }
 
 .product-top::after{
   content:"";
+
   position:absolute;
+
   inset:0;
+
   z-index:2;
-  background:linear-gradient(
-    0deg,
-    rgba(0,0,0,.60),
-    rgba(0,0,0,.05)
-  );
+
+  background:
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.65),
+      rgba(0,0,0,.05)
+    );
 }
 
 .product-body{
   padding:18px;
 }
 
-.origin{
+.product-label{
   display:inline-block;
-  background:#fff0e4;
-  color:#e24a25;
+
   padding:7px 10px;
-  border-radius:11px;
+
+  border-radius:10px;
+
+  background:#fff0e4;
+
+  color:#df4928;
+
   font-size:11px;
-  font-weight:900;
+
+  font-weight:1000;
+
   margin-bottom:15px;
 }
 
 .formats{
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:9px;
 }
 
 .format{
-  border:1px solid #eadfd5;
+  padding:12px;
+
   border-radius:14px;
-  padding:11px;
+
+  border:1px solid #eadfd5;
+
   background:#fffaf6;
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   font-size:12px;
 }
 
@@ -257,57 +334,8 @@ main{
 }
 
 .price{
-  color:#e54722;
-  font-size:14px;
-  font-weight:1000;
-}
+  color:#e44723;
 
-/* =========================
-   BOTTOM VISUAL CART
-========================= */
-
-.cart-bar{
-  position:fixed;
-  z-index:50;
-  left:12px;
-  right:12px;
-  bottom:12px;
-  background:#15171c;
-  color:#fff;
-  border-radius:23px;
-  padding:14px 16px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 12px 40px rgba(0,0,0,.35);
-}
-
-.cart-info{
-  display:flex;
-  flex-direction:column;
-}
-
-.cart-info strong{
-  font-size:15px;
-}
-
-.cart-info span{
-  color:#aaa;
-  font-size:11px;
-  margin-top:3px;
-}
-
-.cart-button{
-  border:0;
-  border-radius:16px;
-  padding:13px 17px;
-  background:linear-gradient(
-    90deg,
-    #ff7b19,
-    #ffc01a
-  );
-  color:#111;
-  font-size:12px;
   font-weight:1000;
 }
 
@@ -317,9 +345,79 @@ main{
 
 .footer{
   text-align:center;
-  color:#999;
-  font-size:11px;
+
   padding:30px 15px;
+
+  color:#999;
+
+  font-size:11px;
+}
+
+/* =========================
+   CART VISUEL
+========================= */
+
+.cart-bar{
+  position:fixed;
+
+  z-index:50;
+
+  left:12px;
+  right:12px;
+  bottom:12px;
+
+  padding:14px 16px;
+
+  border-radius:23px;
+
+  background:#17191f;
+
+  color:white;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  box-shadow:
+    0 12px 40px rgba(0,0,0,.35);
+}
+
+.cart-info{
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-info strong{
+  font-size:14px;
+}
+
+.cart-info span{
+  color:#aaa;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.cart-button{
+  border:0;
+
+  border-radius:15px;
+
+  padding:12px 16px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff741c,
+      #ffc21b
+    );
+
+  color:#111;
+
+  font-size:12px;
+
+  font-weight:1000;
 }
 
 /* =========================
@@ -329,8 +427,8 @@ main{
 @media(min-width:700px){
 
   .hero{
-    min-height:650px;
-    padding:50px 7%;
+    min-height:680px;
+    padding:55px 8%;
   }
 
   .products{
@@ -338,11 +436,11 @@ main{
   }
 
   .logo{
-    font-size:92px;
+    font-size:105px;
   }
 
   .product-top{
-    min-height:200px;
+    min-height:210px;
   }
 }
 </style>
@@ -352,9 +450,11 @@ main{
 
 <header class="hero">
 
+  <div class="hero-overlay"></div>
+
   <div class="hero-content">
 
-    <div class="badge">
+    <div class="hero-badge">
       ☕ COFFEE SHOP
     </div>
 
@@ -362,28 +462,36 @@ main{
       Heisenberg44
     </div>
 
-    <div class="logo-small">
+    <div class="coffee-logo">
       COFFEE SHOP
     </div>
 
-    <div class="hero-subtitle">
-      🌴 Good vibes • Good coffee 🌅
+    <div class="hero-text">
+      🌴 Good vibes • Good coffee • Sunset vibes 🌅
     </div>
 
   </div>
 
 </header>
 
+
 <main>
 
-  <div class="section-title">
+  <div class="title-row">
+
     <h2>Nos produits</h2>
-    <span>Collection</span>
+
+    <span>
+      COLLECTION
+    </span>
+
   </div>
+
 
   <section class="products">
 
-    <!-- PRODUIT 01 -->
+
+    <!-- 01 -->
 
     <article class="product">
 
@@ -405,7 +513,7 @@ main{
 
       <div class="product-body">
 
-        <div class="origin">
+        <div class="product-label">
           Collection
         </div>
 
@@ -413,22 +521,22 @@ main{
 
           <div class="format">
             <strong>Petit</strong>
-            <span class="price">8€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Moyen</strong>
-            <span class="price">10€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Grand</strong>
-            <span class="price">12€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>XL</strong>
-            <span class="price">15€</span>
+            <span class="price">—</span>
           </div>
 
         </div>
@@ -438,7 +546,7 @@ main{
     </article>
 
 
-    <!-- PRODUIT 02 -->
+    <!-- 02 -->
 
     <article class="product">
 
@@ -460,7 +568,7 @@ main{
 
       <div class="product-body">
 
-        <div class="origin">
+        <div class="product-label">
           Collection
         </div>
 
@@ -468,22 +576,22 @@ main{
 
           <div class="format">
             <strong>Petit</strong>
-            <span class="price">8€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Moyen</strong>
-            <span class="price">10€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Grand</strong>
-            <span class="price">12€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>XL</strong>
-            <span class="price">15€</span>
+            <span class="price">—</span>
           </div>
 
         </div>
@@ -493,7 +601,7 @@ main{
     </article>
 
 
-    <!-- PRODUIT 03 -->
+    <!-- 03 -->
 
     <article class="product">
 
@@ -515,7 +623,7 @@ main{
 
       <div class="product-body">
 
-        <div class="origin">
+        <div class="product-label">
           Collection
         </div>
 
@@ -523,22 +631,22 @@ main{
 
           <div class="format">
             <strong>Petit</strong>
-            <span class="price">8€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Moyen</strong>
-            <span class="price">10€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Grand</strong>
-            <span class="price">12€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>XL</strong>
-            <span class="price">15€</span>
+            <span class="price">—</span>
           </div>
 
         </div>
@@ -548,7 +656,7 @@ main{
     </article>
 
 
-    <!-- PRODUIT 04 AVEC VIDEO -->
+    <!-- 04 VIDEO -->
 
     <article class="product">
 
@@ -566,10 +674,12 @@ main{
           playsinline
           preload="auto"
         >
+
           <source
             src="cam_930a43ee.mp4"
             type="video/mp4"
           >
+
         </video>
 
         <div class="product-name">
@@ -580,7 +690,7 @@ main{
 
       <div class="product-body">
 
-        <div class="origin">
+        <div class="product-label">
           Collection
         </div>
 
@@ -588,22 +698,22 @@ main{
 
           <div class="format">
             <strong>Petit</strong>
-            <span class="price">8€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Moyen</strong>
-            <span class="price">10€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Grand</strong>
-            <span class="price">12€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>XL</strong>
-            <span class="price">15€</span>
+            <span class="price">—</span>
           </div>
 
         </div>
@@ -613,7 +723,7 @@ main{
     </article>
 
 
-    <!-- PRODUIT 05 -->
+    <!-- 05 -->
 
     <article class="product">
 
@@ -635,7 +745,7 @@ main{
 
       <div class="product-body">
 
-        <div class="origin">
+        <div class="product-label">
           Collection
         </div>
 
@@ -643,22 +753,22 @@ main{
 
           <div class="format">
             <strong>Petit</strong>
-            <span class="price">8€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Moyen</strong>
-            <span class="price">10€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>Grand</strong>
-            <span class="price">12€</span>
+            <span class="price">—</span>
           </div>
 
           <div class="format">
             <strong>XL</strong>
-            <span class="price">15€</span>
+            <span class="price">—</span>
           </div>
 
         </div>
@@ -668,6 +778,7 @@ main{
     </article>
 
   </section>
+
 
   <div class="footer">
     Heisenberg44<br>
@@ -680,12 +791,19 @@ main{
 <div class="cart-bar">
 
   <div class="cart-info">
-    <strong>🛒 Mon catalogue</strong>
-    <span>Présentation des produits</span>
+
+    <strong>
+      🛒 Mon catalogue
+    </strong>
+
+    <span>
+      Présentation des produits
+    </span>
+
   </div>
 
   <button class="cart-button">
-    Voir le catalogue →
+    Explorer →
   </button>
 
 </div>
