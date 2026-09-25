@@ -305,7 +305,30 @@ main{
 
   h1{
     font-size:58px;
-  }
+  }.product-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
+}
+
+.product-top::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    0deg,
+    rgba(0,0,0,.35),
+    rgba(0,0,0,0)
+  );
+  z-index:2;
+}
+
+.product-number,
+.product-name{
+  z-index:3;
 }
 </style>
 </head>
