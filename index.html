@@ -1,281 +1,336 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heisenberg44 - Boutique CBD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<title>Heisenberg44</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fffaf5;
+  color: #172033;
+  padding-bottom: 100px;
+}
 
-    header {
-      padding: 22px 15px;
-      text-align: center;
-      background: #171717;
-      border-bottom: 1px solid #333;
-    }
+/* BANNIÈRE */
+.hero {
+  min-height: 330px;
+  padding: 35px 22px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
 
-    header h1 {
-      margin: 0;
-      font-size: 25px;
-    }
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,120,30,.15),
+      rgba(230,30,40,.65)
+    ),
+    linear-gradient(
+      135deg,
+      #ffd166,
+      #ff7b22 45%,
+      #e82d3f
+    );
+}
 
-    header p {
-      margin: 8px 0 0;
-      color: #aaa;
-    }
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: #ffd43b;
+  border-radius: 50%;
+  right: -100px;
+  top: 35px;
+  opacity: .75;
+}
 
-    .products {
-      padding: 15px;
-      display: grid;
-      gap: 15px;
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
 
-    .product {
-      background: #1d1d1d;
-      border-radius: 14px;
-      padding: 16px;
-      border: 1px solid #333;
-    }
+.hero h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
 
-    .product h2 {
-      margin: 0 0 8px;
-      font-size: 19px;
-    }
+.hero p {
+  margin: 8px 0 0;
+  font-size: 18px;
+  font-weight: 600;
+}
 
-    .product p {
-      color: #aaa;
-      font-size: 14px;
-    }
+/* TITRE */
+.section-title {
+  padding: 25px 18px 12px;
+}
 
-    select {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #555;
-      background: #292929;
-      color: white;
-      font-size: 15px;
-    }
+.section-title h2 {
+  margin: 0;
+  font-size: 30px;
+}
 
-    button {
-      width: 100%;
-      padding: 13px;
-      border: 0;
-      border-radius: 9px;
-      background: #2ea043;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-    }
+.section-title span {
+  display: block;
+  margin-top: 5px;
+  color: #777;
+}
 
-    .cart {
-      position: sticky;
-      bottom: 0;
-      padding: 15px;
-      background: #171717;
-      border-top: 1px solid #333;
-    }
+/* GRILLE */
+.products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  padding: 12px 15px 25px;
+}
 
-    #cart {
-      margin-bottom: 10px;
-      color: #ddd;
-    }
-  </style>
+/* CARTE */
+.card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  box-shadow: 0 8px 25px rgba(0,0,0,.09);
+  transition: transform .2s ease;
+}
+
+.card:active {
+  transform: scale(.98);
+}
+
+.card-image {
+  height: 190px;
+  display: flex;
+  align-items: flex-end;
+  padding: 15px;
+
+  background:
+    radial-gradient(circle at 75% 25%, #ffd43b 0 8%, transparent 9%),
+    linear-gradient(135deg, #ffcc33, #ff7133 50%, #d9234f);
+}
+
+.card-image span {
+  background: #171717;
+  color: #ffd43b;
+  padding: 7px 11px;
+  border-radius: 9px;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.card-body {
+  padding: 17px;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 21px;
+}
+
+.card p {
+  margin: 0 0 14px;
+  color: #687080;
+}
+
+/* OPTIONS */
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+
+.option {
+  padding: 11px 5px;
+  border-radius: 12px;
+  background: #f1f3f5;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* BOUTON VISUEL */
+.fake-button {
+  margin-top: 14px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 800;
+  color: white;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff3045,
+      #ff711f,
+      #ffc928
+    );
+
+  box-shadow: 0 6px 15px rgba(240,70,40,.25);
+}
+
+/* PANIER VISUEL */
+.cart-bar {
+  position: fixed;
+  z-index: 50;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 13px 16px;
+  border-radius: 22px;
+
+  background: rgba(35,25,25,.95);
+  color: white;
+
+  box-shadow: 0 10px 35px rgba(0,0,0,.3);
+}
+
+.cart-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg,#ff3045,#ff9f1c);
+  font-size: 23px;
+}
+
+.cart-title {
+  font-weight: 800;
+}
+
+.cart-sub {
+  font-size: 13px;
+  color: #ddd;
+  margin-top: 3px;
+}
+
+.cart-button {
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: linear-gradient(90deg,#ff3045,#ff9f1c);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* TABLET / GRANDS ÉCRANS */
+@media (min-width: 700px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .hero {
+    min-height: 400px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>🌿 Heisenberg44</h1>
-  <p>Boutique CBD</p>
+<header class="hero">
+  <div class="hero-content">
+    <h1>Heisenberg44</h1>
+    <p>Coffee Shop • Rotterdam</p>
+  </div>
 </header>
 
-<div class="products">
+<section class="section-title">
+  <h2>Nos produits</h2>
+  <span>Qualité • Sélection • Passion</span>
+</section>
 
-  <div class="product">
-    <h2>Cali Mousse 🍯🌟</h2>
-    <p>Farm : in California 🇺🇸</p>
+<main class="products">
 
-    <select onchange="setPrice('Cali Mousse 🍯🌟', this)">
-      <option value="10">2,5g — 10€</option>
-      <option value="20">5g — 20€</option>
-      <option value="40">10g — 40€</option>
-      <option value="90">20g — 90€</option>
-      <option value="170">50g — 170€</option>
-      <option value="270">100g — 270€</option>
-    </select>
+  <article class="card">
+    <div class="card-image">
+      <span>★ PREMIUM</span>
+    </div>
 
-    <button onclick="addProduct('Cali Mousse 🍯🌟')">
-      Ajouter au panier
-    </button>
+    <div class="card-body">
+      <h3>Produit 01</h3>
+      <p>Sélection premium</p>
+
+      <div class="options">
+        <div class="option">Option 1</div>
+        <div class="option">Option 2</div>
+        <div class="option">Option 3</div>
+        <div class="option">Option 4</div>
+        <div class="option">Option 5</div>
+        <div class="option">Option 6</div>
+      </div>
+
+      <div class="fake-button">🛒 Ajouter au panier</div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-image">
+      <span>★ PREMIUM</span>
+    </div>
+
+    <div class="card-body">
+      <h3>Produit 02</h3>
+      <p>Sélection premium</p>
+
+      <div class="options">
+        <div class="option">Option 1</div>
+        <div class="option">Option 2</div>
+        <div class="option">Option 3</div>
+        <div class="option">Option 4</div>
+        <div class="option">Option 5</div>
+        <div class="option">Option 6</div>
+      </div>
+
+      <div class="fake-button">🛒 Ajouter au panier</div>
+    </div>
+  </article>
+
+</main>
+
+<div class="cart-bar">
+  <div class="cart-left">
+    <div class="cart-icon">🛒</div>
+
+    <div>
+      <div class="cart-title">Panier</div>
+      <div class="cart-sub">Votre sélection</div>
+    </div>
   </div>
 
-  <div class="product">
-    <h2>Tiramisu Dry 🇺🇸🍫</h2>
-    <p>90U / FARM : K.G.F 🦊</p>
-
-    <select onchange="setPrice('Tiramisu Dry 🇺🇸🍫', this)">
-      <option value="20">1,6g — 20€</option>
-      <option value="50">5g — 50€</option>
-      <option value="80">10g — 80€</option>
-      <option value="160">20g — 160€</option>
-      <option value="360">50g — 360€</option>
-      <option value="530">100g — 530€</option>
-    </select>
-
-    <button onclick="addProduct('Tiramisu Dry 🇺🇸🍫')">
-      Ajouter au panier
-    </button>
+  <div class="cart-button">
+    Voir le panier →
   </div>
-
-  <div class="product">
-    <h2>Apple Dry 🍫🍏🫨</h2>
-    <p>Product in Morocco</p>
-
-    <select onchange="setPrice('Apple Dry 🍫🍏🫨', this)">
-      <option value="20">1,4g — 20€</option>
-      <option value="50">5g — 50€</option>
-      <option value="80">10g — 80€</option>
-      <option value="160">20g — 160€</option>
-      <option value="360">50g — 360€</option>
-      <option value="550">100g — 550€</option>
-    </select>
-
-    <button onclick="addProduct('Apple Dry 🍫🍏🫨')">
-      Ajouter au panier
-    </button>
-  </div>
-
-  <div class="product">
-    <h2>Frozen Banana Papaya 🍯🍌🥭</h2>
-    <p>120U / FARM : K.G.F 🦊</p>
-
-    <select onchange="setPrice('Frozen Banana Papaya 🍯🍌🥭', this)">
-      <option value="20">1g — 20€</option>
-      <option value="50">5g — 50€</option>
-      <option value="80">10g — 80€</option>
-      <option value="160">20g — 160€</option>
-      <option value="360">50g — 360€</option>
-      <option value="620">100g — 620€</option>
-    </select>
-
-    <button onclick="addProduct('Frozen Banana Papaya 🍯🍌🥭')">
-      Ajouter au panier
-    </button>
-  </div>
-
-  <div class="product">
-    <h2>Cali Amnesia 🍋‍🟩🍋🫠</h2>
-    <p>Farm : in Spain 🇪🇸</p>
-
-    <select onchange="setPrice('Cali Amnesia 🍋‍🟩🍋🫠', this)">
-      <option value="10">1g — 10€</option>
-      <option value="50">5g — 50€</option>
-      <option value="90">10g — 90€</option>
-      <option value="170">20g — 170€</option>
-      <option value="400">50g — 400€</option>
-      <option value="650">100g — 650€</option>
-    </select>
-
-    <button onclick="addProduct('Cali Amnesia 🍋‍🟩🍋🫠')">
-      Ajouter au panier
-    </button>
-  </div>
-
 </div>
-
-<div class="cart">
-  <div id="cart">🛒 Panier vide</div>
-  <button onclick="sendOrder()">Commander sur Telegram</button>
-</div>
-
-<script>
-  let cart = [];
-  let selectedPrices = {};
-
-  function setPrice(product, select) {
-    selectedPrices[product] = select.value;
-  }
-
-  function addProduct(product) {
-    const price = selectedPrices[product];
-
-    if (!price) {
-      alert("Choisis d'abord un format.");
-      return;
-    }
-
-    cart.push({
-      product: product,
-      price: price
-    });
-
-    updateCart();
-  }
-
-  function updateCart() {
-    if (cart.length === 0) {
-      document.getElementById("cart").innerText = "🛒 Panier vide";
-      return;
-    }
-
-    let total = 0;
-    let text = "🛒 Panier :\n";
-
-    cart.forEach(item => {
-      total += Number(item.price);
-      text += "• " + item.product + " — " + item.price + "€\n";
-    });
-
-    text += "\n💰 Total : " + total + "€";
-
-    document.getElementById("cart").innerText = text;
-  }
-
-  function sendOrder() {
-    if (cart.length === 0) {
-      alert("Ton panier est vide.");
-      return;
-    }
-
-    let message = "Bonjour, je souhaite passer une commande :\n\n";
-
-    cart.forEach(item => {
-      message += "• " + item.product + " — " + item.price + "€\n";
-    });
-
-    let total = cart.reduce(
-      (sum, item) => sum + Number(item.price),
-      0
-    );
-
-    message += "\nTotal : " + total + "€";
-
-    if (window.Telegram && Telegram.WebApp) {
-      Telegram.WebApp.showAlert(message);
-    } else {
-      alert(message);
-    }
-  }
-
-  if (window.Telegram && Telegram.WebApp) {
-    Telegram.WebApp.ready();
-    Telegram.WebApp.expand();
-  }
-</script>
 
 </body>
 </html>
