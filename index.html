@@ -24,12 +24,17 @@ body{
 .app:before{
   content:"";
   position:fixed;
-  inset:0;
+  inset:-40px;
   pointer-events:none;
   z-index:1;
   background:
     repeating-linear-gradient(0deg, rgba(0,229,255,.06) 0px, rgba(0,229,255,.06) 1px, transparent 1px, transparent 34px),
     repeating-linear-gradient(90deg, rgba(255,46,230,.05) 0px, rgba(255,46,230,.05) 1px, transparent 1px, transparent 34px);
+  animation:gridDrift 14s linear infinite;
+}
+@keyframes gridDrift{
+  0%{transform:translate(0,0)}
+  100%{transform:translate(34px,34px)}
 }
 .app:after{
   content:"";
@@ -55,10 +60,23 @@ body{
   position:sticky;
   top:0;
   z-index:20;
+  overflow:hidden;
 }
-.close{font-size:21px;color:#fff}
+.header:after{
+  content:"";
+  position:absolute;
+  bottom:0;left:-100%;
+  width:100%;height:2px;
+  background:linear-gradient(90deg,transparent,#00e5ff,#ff2ee6,transparent);
+  animation:laserSweep 4s linear infinite;
+}
+@keyframes laserSweep{
+  0%{left:-100%}
+  100%{left:100%}
+}
+.close{font-size:21px;color:#00e5ff;text-shadow:0 0 8px rgba(0,229,255,.6)}
 .title{text-align:center;flex:1}
-.title b{font-size:20px;display:block;color:#fff}
+.title b{font-size:20px;display:block;color:#fff;font-family:'Orbitron',sans-serif;letter-spacing:1.5px;text-shadow:0 0 10px rgba(0,229,255,.6),0 0 22px rgba(255,46,230,.35)}
 .title span{font-size:15px;color:#999}
 .title span:before{
   content:"";
@@ -76,11 +94,12 @@ body{
   50%{opacity:.25}
 }
 .menu{
-  width:38px;height:38px;border:2px solid #fff;
+  width:38px;height:38px;border:2px solid #00e5ff;
   border-radius:50%;display:flex;
   align-items:center;justify-content:center;
   font-size:18px;
-  color:#fff;
+  color:#00e5ff;
+  box-shadow:0 0 10px rgba(0,229,255,.5), inset 0 0 8px rgba(0,229,255,.25);
 }
 
 /* BANNIÈRE */
@@ -100,8 +119,10 @@ body{
   position:absolute;
   inset:0;
   background:linear-gradient(
-    transparent 45%,
-    rgba(12,11,10,.55) 75%,
+    transparent 15%,
+    rgba(12,11,10,.25) 45%,
+    rgba(12,11,10,.6) 70%,
+    rgba(12,11,10,.9) 90%,
     #0c0b0a 100%
   );
 }
@@ -129,6 +150,24 @@ body{
   gap:12px;
   z-index:3;
 }
+.particles{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.particle{
+  position:absolute;
+  border-radius:50%;
+  background:#00e5ff;
+  box-shadow:0 0 8px 2px rgba(0,229,255,.8);
+  animation:floatParticle 6s ease-in-out infinite;
+}
+.particle:nth-child(1){width:4px;height:4px;left:10%;top:70%;animation-duration:5s;background:#00e5ff}
+.particle:nth-child(2){width:3px;height:3px;left:25%;top:30%;animation-duration:7s;animation-delay:.5s;background:#ff2ee6;box-shadow:0 0 8px 2px rgba(255,46,230,.8)}
+.particle:nth-child(3){width:5px;height:5px;left:45%;top:55%;animation-duration:6.5s;animation-delay:1s;background:#00e5ff}
+.particle:nth-child(4){width:3px;height:3px;left:65%;top:20%;animation-duration:5.5s;animation-delay:1.5s;background:#fff44f;box-shadow:0 0 8px 2px rgba(255,244,79,.8)}
+.particle:nth-child(5){width:4px;height:4px;left:80%;top:60%;animation-duration:7.5s;animation-delay:.8s;background:#ff2ee6;box-shadow:0 0 8px 2px rgba(255,46,230,.8)}
+.particle:nth-child(6){width:3px;height:3px;left:90%;top:35%;animation-duration:6s;animation-delay:2s;background:#00e5ff}
+@keyframes floatParticle{
+  0%,100%{transform:translateY(0) translateX(0);opacity:.7}
+  50%{transform:translateY(-24px) translateX(8px);opacity:1}
+}
 .social{
   width:62px;height:62px;
   border-radius:17px;
@@ -139,6 +178,7 @@ body{
   justify-content:center;
   font-size:27px;
 }
+.social a{display:flex;align-items:center;justify-content:center}
 
 /* TITRE */
 .shop-title{
@@ -147,6 +187,23 @@ body{
   padding:24px 8px 30px;
   font-size:26px;
   font-weight:400;
+  position:relative;
+}
+.shop-title:before{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  width:280px;height:120px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse,rgba(255,46,230,.18),transparent 70%);
+  filter:blur(6px);
+  animation:auraPulse 3.5s ease-in-out infinite;
+  z-index:0;
+}
+.shop-title .shine{position:relative;z-index:1}
+@keyframes auraPulse{
+  0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}
 }
 .shop-title .shine{
   font-family:'Luckiest Guy',cursive;
@@ -179,8 +236,10 @@ body{
   100%{background-position:-200% 0}
 }
 @keyframes neonPulse{
-  0%,100%{box-shadow:0 4px 15px rgba(0,0,0,.06),0 0 0 rgba(0,229,255,0)}
-  50%{box-shadow:0 4px 15px rgba(0,0,0,.06),0 0 14px rgba(255,46,230,.35)}
+  0%{box-shadow:0 4px 15px rgba(0,0,0,.06),0 0 10px rgba(0,229,255,.25);border-color:rgba(0,229,255,.5)}
+  33%{box-shadow:0 4px 15px rgba(0,0,0,.06),0 0 16px rgba(255,46,230,.4);border-color:rgba(255,46,230,.5)}
+  66%{box-shadow:0 4px 15px rgba(0,0,0,.06),0 0 16px rgba(255,244,79,.35);border-color:rgba(255,244,79,.5)}
+  100%{box-shadow:0 4px 15px rgba(0,0,0,.06),0 0 10px rgba(0,229,255,.25);border-color:rgba(0,229,255,.5)}
 }
 
 /* SECTIONS */
@@ -193,6 +252,8 @@ body{
   display:flex;
   align-items:center;
   gap:14px;
+  font-family:'Orbitron',sans-serif;
+  letter-spacing:.5px;
 }
 .section-title:before{
   content:"";
@@ -279,6 +340,8 @@ body{
   font-size:23px;
   font-weight:750;
   margin-bottom:18px;
+  font-family:'Orbitron',sans-serif;
+  text-shadow:0 0 10px rgba(0,229,255,.5);
 }
 .flags{font-size:23px;letter-spacing:4px}
 
@@ -356,6 +419,20 @@ body{
   letter-spacing:.5px;
   text-transform:uppercase;
   box-shadow:0 0 12px rgba(0,229,255,.4),inset 0 0 10px rgba(0,229,255,.15);
+  position:relative;
+  overflow:hidden;
+}
+.button:before{
+  content:"";
+  position:absolute;
+  top:0;left:-150%;
+  width:150%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(0,229,255,.4),transparent);
+  animation:btnShine 3.5s linear infinite;
+}
+@keyframes btnShine{
+  0%{left:-150%}
+  100%{left:150%}
 }
 
 /* BARRE DU BAS */
@@ -375,12 +452,27 @@ body{
   align-items:center;
   justify-content:space-around;
 }
+.bottom:before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:44px;
+  padding:2px;
+  background:linear-gradient(90deg,#00e5ff,#ff2ee6,#fff44f,#00e5ff);
+  background-size:300% 100%;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  animation:navCycle 5s linear infinite;
+  z-index:-1;
+}
 .nav{
   color:#999;
   font-size:28px;
   display:flex;
   align-items:center;
   justify-content:center;
+  filter:drop-shadow(0 0 4px rgba(0,229,255,.2));
 }
 .nav.active{
   color:#fff;
@@ -434,43 +526,31 @@ body{
   <section class="hero">
     <img src="E1129400-930B-4D6B-AFDF-C96B2D9968C3.png" alt="HEISENBERG44">
 
+    <div class="particles">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+    </div>
+
     <div class="socials">
-      <https://t.me/LeHeisenberg44>
       <div class="social">
+        <a href="https://t.me/LeHeisenberg44" target="_blank">
         <svg viewBox="0 0 240 240" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
           <circle cx="120" cy="120" r="120" fill="#29A9EA"/>
           <path fill="#fff" d="M180.5 72.3 158 176.7c-1.7 7.6-6.2 9.5-12.6 5.9l-34.8-25.7-16.8 16.2c-1.9 1.9-3.4 3.4-7 3.4l2.5-35.7 65-58.7c2.8-2.5-.6-3.9-4.4-1.4l-80.3 50.6-34.6-10.8c-7.5-2.4-7.7-7.5 1.6-11.1l135.4-52.2c6.3-2.3 11.8 1.5 9.5 10.1Z"/>
         </svg>
+        </a>
       </div>
       <div class="social">
-        <svg viewBox="0 0 240 240" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="240" rx="56" fill="#010101"/>
-          <path fill="#25F4EE" d="M154 54c9 20 26 33 48 35v27c-17 0-33-5-46-15v66c0 34-27 61-61 61s-61-27-61-61 27-61 61-61c4 0 7 0 11 1v29a29 29 0 1 0 21 28V54h27Z"/>
-          <path fill="#FE2C55" d="M146 54c9 20 26 33 48 35v27c-17 0-33-5-46-15v66c0 34-27 61-61 61-15 0-29-5-40-14a61 61 0 0 0 47 14c34 0 61-27 61-61V88c13 10 29 15 46 15V76c-22-2-39-15-48-35h-7Z"/>
-          <path fill="#fff" d="M150 54c9 20 26 33 48 35v27c-17 0-33-5-46-15v66c0 34-27 61-61 61s-61-27-61-61 27-61 61-61c4 0 7 0 11 1v29a29 29 0 1 0 21 28V54h27Z"/>
-        </svg>
-      </div>
-      <div class="social">
-        <svg viewBox="0 0 240 240" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="igGrad" x1="0" y1="240" x2="240" y2="0">
-              <stop offset="0" stop-color="#FEE411"/>
-              <stop offset=".3" stop-color="#FD5949"/>
-              <stop offset=".6" stop-color="#D6249F"/>
-              <stop offset="1" stop-color="#285AEB"/>
-            </linearGradient>
-          </defs>
-          <rect width="240" height="240" rx="56" fill="url(#igGrad)"/>
-          <rect x="60" y="60" width="120" height="120" rx="32" fill="none" stroke="#fff" stroke-width="12"/>
-          <circle cx="120" cy="120" r="32" fill="none" stroke="#fff" stroke-width="12"/>
-          <circle cx="167" cy="73" r="9" fill="#fff"/>
-        </svg>
-      </div>
-      <div class="social">
+        <a href="https://signal.me/#eu/WN-12hcBzd9Ewaq0vFOZoRaNlWiT4eB6m9WSHIoJaQufYgj4MrRM8oVmJIyT762l" target="_blank">
         <svg viewBox="0 0 240 240" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
           <circle cx="120" cy="120" r="120" fill="#3A76F0"/>
           <path fill="#fff" d="M120 60c-38 0-68 27-68 61 0 19 10 36 26 48l-6 26 27-14c7 2 14 3 21 3 38 0 68-27 68-63s-30-61-68-61Z"/>
         </svg>
+        </a>
       </div>
     </div>
   </section>
