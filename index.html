@@ -464,54 +464,19 @@ function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add(
   let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(build, 250); });
 })();
 
-<script>
-CONFIG.categories.push(
-  { name:"🔥 Briquets" },
-  { name:"🧽 Éponges" }
-);
-
+CONFIG.categories.push({ name:"TEST" }, { name:"🔥 Briquets" });
 CONFIG.products.push(
-  {
-    id:"p7",
-    name:"Briquet 1",
-    category:"🔥 Briquets",
-    desc:"Courte description du produit.",
-    image:"",
-    color:"linear-gradient(135deg,#b04dff,#ff5fa8)",
-    variants:[{label:"Unité",price:2}]
-  },
-  {
-    id:"p8",
-    name:"Briquet 2",
-    category:"🔥 Briquets",
-    desc:"Courte description du produit.",
-    image:"",
-    color:"linear-gradient(135deg,#2ea8ff,#8dffb0)",
-    variants:[{label:"Unité",price:4}]
-  },
-  {
-    id:"p10",
-    name:"Briquet 3",
-    category:"🔥 Briquets",
-    desc:"Courte description du produit.",
-    image:"",
-    color:"linear-gradient(135deg,#6f32e6,#2ea8ff)",
-    variants:[{label:"Unité",price:3}]
-  },
-  {
-    id:"p11",
-    name:"Éponge",
-    category:"🧽 Éponges",
-    desc:"Courte description du produit.",
-    image:"",
-    color:"linear-gradient(135deg,#1f9d62,#2ea8ff)",
-    variants:[{label:"Unité",price:2}]
-  }
+  { id:"p5", name:"", category:"📄 Feuilles slim", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#6f32e6,#2ea8ff)",
+    variants:[{label:"1 carnet", price:2},{label:"Lot de 5", price:8}] },
+  { id:"p6", name:"Feuilles slim 2", category:"📄 Feuilles slim", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#1f9d62,#2ea8ff)",
+    variants:[{label:"1 carnet", price:2},{label:"Lot de 5", price:8}] },
+  { id:"p7", name:"Briquet 1", category:"🔥 Briquets", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#b04dff,#ff5fa8)",
+    variants:[{label:"Unité", price:2}] },
+  { id:"p8", name:"Briquet 2", category:"🔥 Briquets", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#2ea8ff,#8dffb0)",
+    variants:[{label:"Unité", price:4}] }
 );
 
-renderFilters();
-renderGrid();
-updateCount();
+renderFilters(); renderGrid(); updateCount();
 </script>
 </body>
 </html>
