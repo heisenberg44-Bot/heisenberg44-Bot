@@ -274,7 +274,7 @@ $("#foot").innerHTML = `Une question ? <a href="https://t.me/${CONFIG.telegramUs
 (function(){
   // Sticker Heisenberg (image intégrée, aucun fichier à ajouter)
   const STICKER = "data:image/png;base64,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";
-  const fx = $("#fx"), icons = ["🍃","✦","🌿","✨","🍫","❄️","STICKER"];
+  const fx = $("#fx"), icons = ["🧽","✦","🌿Weed🌿","🍬Tazz🍬","🍫Hash🍫","❄️","STICKER"];
   for (let i = 0; i < 28; i++){
     const s = document.createElement("span");
     const ic = icons[i % icons.length];
@@ -375,7 +375,7 @@ function openProduct(p){
   s.querySelector(".primary").onclick = e => {
     addToCart(p.id, p.variants[chosen].label);
     burst(e.clientX || innerWidth/2, e.clientY || innerHeight/2);
-    closeAll(); toast("Ajouté au panier 🛒");
+    closeAll(); toast("Ajoute au panier 🛒😎");
   };
   show(s);
 }
@@ -394,12 +394,12 @@ function updateCount(){
 function openCart(){
   const s = $("#cartSheet");
   if (!cart.length){
-    s.innerHTML = `<h3>Panier</h3><div class="empty">Ton panier est vide. Choisis un produit pour commencer 👽</div>`;
+    s.innerHTML = `<h3>Panier</h3><div class="empty">Ton panier est vide. choisis ta consso 👌🚀</div>`;
     show(s); return;
   }
   s.innerHTML = `<h3>Panier</h3><div id="lines"></div>
     <div class="total"><span>Total</span><span>${fmt(total())}</span></div>
-    <textarea id="note" rows="2" placeholder="Nom, adresse ou remarque pour ta commande (optionnel)"></textarea>
+    <textarea id="note" rows="2" placeholder="Nom, adresse ou remarque pour ta commande 📍 Disponible en Meet Up 🏪 (optionnel)"></textarea>
     <button class="primary" id="send">Commander sur Telegram</button>`;
   const lines = s.querySelector("#lines");
   cart.forEach((it, idx) => {
@@ -466,7 +466,7 @@ function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add(
 
 CONFIG.categories.push({ name:"📄 Feuilles slim" }, { name:"🔥 Briquets" });
 CONFIG.products.push(
-  { id:"p5", name:"Feuilles slim 1", category:"📄 Feuilles slim", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#6f32e6,#2ea8ff)",
+  { id:"p5", name:"", category:"📄 Feuilles slim", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#6f32e6,#2ea8ff)",
     variants:[{label:"1 carnet", price:2},{label:"Lot de 5", price:8}] },
   { id:"p6", name:"Feuilles slim 2", category:"📄 Feuilles slim", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#1f9d62,#2ea8ff)",
     variants:[{label:"1 carnet", price:2},{label:"Lot de 5", price:8}] },
