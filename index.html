@@ -211,7 +211,7 @@ textarea::placeholder{color:var(--muted)}
 /* ================= CONFIGURATION : modifie uniquement cette partie ================= */
 const CONFIG = {
   shopName: "LeHeisenberg44",
-  tagline: "Le labo est ouvert 24h/24 - 7j/7",
+  tagline: "Le labo est ouvert 24h/24 - 7j/7 Nantes Centre Ville📍",
   zone: "Disponible dans tous les Pays de la Loire et aux alentours",
   telegramUser: "LeHeisenberg44",   // sans le @
   currency: "€",
@@ -397,7 +397,7 @@ function openCart(){
   }
   s.innerHTML = `<h3>Panier</h3><div id="lines"></div>
     <div class="total"><span>Total</span><span>${fmt(total())}</span></div>
-    <textarea id="note" rows="2" placeholder="Nom, adresse ou remarque pour ta commande 📍 Disponible aussi en Meet Up en Centre ville sur Nantes 🏪 (optionnel)"></textarea>
+    <textarea id="note" rows="2" placeholder="Adresse ou remarque pour ta commande 📍 Disponible aussi en Meet Up en Centre ville sur Nantes 🏪 (optionnel)"></textarea>
     <button class="primary" id="send">Commander sur Telegram</button>`;
   const lines = s.querySelector("#lines");
   cart.forEach((it, idx) => {
@@ -465,13 +465,13 @@ function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add(
 CONFIG.categories.push({ name:"Tazz 🍬" }, { name:"Cocaine ❄️" });
 CONFIG.products.push(
   { id:"p5", name:"Weed🌿 Cali U.S 🇺🇸 Royal Runtz 🍪🔱", category:"Weed🌿", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#6f32e6,#2ea8ff)",
-    variants:[{label:"1 carnet", price:2},{label:"Lot de 5", price:8}] },
-  { id:"p6", name:"Tazz 350mg / Full MDMA 🍬😎", category:"Tazz 🍬", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#1f9d62,#2ea8ff)",
-    variants:[{label:"1 carnet", price:2},{label:"Lot de 5", price:8}] },
-  { id:"p7", name:"Briquet 1", category:"🔥 Briquets", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#b04dff,#ff5fa8)",
-    variants:[{label:"Unité", price:2}] },
-  { id:"p8", name:"Briquet 2", category:"🔥 Briquets", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#2ea8ff,#8dffb0)",
-    variants:[{label:"Unité", price:4}] }
+    variants:[{label:"10g", price:120},{label:"Lot de 5", price:8}] },
+  { id:"p6", name:"Weed🌿 Cali Spain 🇪🇸 Amnesia Haze 🍋🍋‍🟩", category:"Weed🌿", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#1f9d62,#2ea8ff)",
+    variants:[{label:"10g", price:80},{label:"10 tazz", price:70€}] },
+  { id:"p7", name:"Tazz 350mg / Full MDMA 🍬🤯", category:"Tazz🍬", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#b04dff,#ff5fa8)",
+    variants:[{label:"Unité", price:10}] },
+  { id:"p8", name:"Cocaïne Peruvienne 🇵🇪", category:"Cocaine ❄️", desc:"Courte description du produit.", image:"", color:"linear-gradient(135deg,#2ea8ff,#8dffb0)",
+    variants:[{label:"1g", price:50}] }
 );
 
 renderFilters(); renderGrid(); updateCount();
